@@ -1,0 +1,17 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
+    <Version>2.2.2</Version>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <OutputPath>..\Bin\netstandard\Release</OutputPath>
+    <DocumentationFile>..\Bin\netstandard\Release\LogoFX.Client.Modularity.xml</DocumentationFile>
+    <EmbedAllSources>True</EmbedAllSources>
+    <DebugType>embedded</DebugType>
+    <DebugSymbols>true</DebugSymbols>
+  </PropertyGroup>
+  <ItemGroup>
+    <PackageReference Include="Solid.Core" Version="2.3.2" />
+  </ItemGroup>
+</Project>

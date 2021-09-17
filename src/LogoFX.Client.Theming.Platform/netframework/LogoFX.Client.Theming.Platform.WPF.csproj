@@ -1,0 +1,132 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{3720D35C-1548-4B53-A37D-31A5C7D49A20}</ProjectGuid>
+    <OutputType>library</OutputType>
+    <RootNamespace>LogoFX.Client.Theming</RootNamespace>
+    <AssemblyName>LogoFX.Client.Theming.Platform</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">   
+    <Optimize>true</Optimize>
+    <OutputPath>..\..\bin\netframework\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <DocumentationFile>..\..\bin\netframework\Release\LogoFX.Client.Theming.Platform.xml</DocumentationFile>
+	<EmbedAllSources>True</EmbedAllSources>
+     <DebugType>embedded</DebugType>
+     <DebugSymbols>true</DebugSymbols>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xaml">
+      <RequiredTargetFramework>4.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="WindowsBase" />
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="..\src\ColorEntryUtils.cs">
+      <Link>ColorEntryUtils.cs</Link>
+    </Compile>
+    <Compile Include="..\src\CompiledCustomStyle.cs">
+      <Link>CompiledCustomStyle.cs</Link>
+    </Compile>
+    <Compile Include="..\src\CustomColor.cs">
+      <Link>CustomColor.cs</Link>
+    </Compile>
+    <Compile Include="..\src\CustomControlStyleAttribute.cs">
+      <Link>CustomControlStyleAttribute.cs</Link>
+    </Compile>
+    <Compile Include="..\src\CustomStyleBase.cs">
+      <Link>CustomStyleBase.cs</Link>
+    </Compile>
+    <Compile Include="..\src\CustomStyleManager.cs">
+      <Link>CustomStyleManager.cs</Link>
+    </Compile>
+    <Compile Include="..\src\ICustomStyleManager.cs">
+      <Link>ICustomStyleManager.cs</Link>
+    </Compile>
+    <Compile Include="..\src\ITheme.cs">
+      <Link>ITheme.cs</Link>
+    </Compile>
+    <Compile Include="..\src\IThemeNotifyChanged.cs">
+      <Link>IThemeNotifyChanged.cs</Link>
+    </Compile>
+    <Compile Include="..\src\IThemesManager.cs">
+      <Link>IThemesManager.cs</Link>
+    </Compile>
+    <Compile Include="..\src\IThemeTree.cs">
+      <Link>IThemeTree.cs</Link>
+    </Compile>
+    <Compile Include="..\src\RawCustomStyle.cs">
+      <Link>RawCustomStyle.cs</Link>
+    </Compile>
+    <Compile Include="..\src\ThemeBase.cs">
+      <Link>ThemeBase.cs</Link>
+    </Compile>
+    <Compile Include="..\src\ThemeResourceDictionaryAttribute.cs">
+      <Link>ThemeResourceDictionaryAttribute.cs</Link>
+    </Compile>
+    <Compile Include="..\src\ThemesManager.cs">
+      <Link>ThemesManager.cs</Link>
+    </Compile>
+    <Compile Include="..\src\ThemeTree.cs">
+      <Link>ThemeTree.cs</Link>
+    </Compile>
+    <Compile Include="..\src\TypeTheme.cs">
+      <Link>TypeTheme.cs</Link>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\LogoFX.Client.Theming\LogoFX.Client.Theming.csproj">
+      <Project>{d446f9a7-8d9e-4372-9fec-0ab30cc60374}</Project>
+      <Name>LogoFX.Client.Theming</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

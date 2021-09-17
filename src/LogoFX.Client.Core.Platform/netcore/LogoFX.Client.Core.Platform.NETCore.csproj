@@ -1,0 +1,29 @@
+<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
+    <AssemblyName>LogoFX.Client.Core.Platform</AssemblyName>
+    <RootNamespace>LogoFX.Client.Core</RootNamespace>
+    <UseWPF>true</UseWPF>
+    <Version>2.2.2</Version>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <OutputPath>..\..\Bin\netcore\Release</OutputPath>
+    <DocumentationFile>..\..\Bin\netcore\Release\LogoFX.Client.Core.Platform.xml</DocumentationFile>
+    <DefineConstants>TRACE;NETCORE</DefineConstants>
+    <EmbedAllSources>True</EmbedAllSources>
+    <DebugType>embedded</DebugType>
+    <DebugSymbols>true</DebugSymbols>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <DefineConstants>TRACE;NETCORE</DefineConstants>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="..\src\CommonProperties.cs" Link="CommonProperties.cs" />
+    <Compile Include="..\src\Consts.cs" Link="Consts.cs" />
+    <Compile Include="..\src\PlatformDispatch.cs" Link="PlatformDispatch.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\LogoFX.Client.Core\LogoFX.Client.Core.csproj" />
+  </ItemGroup>
+</Project>

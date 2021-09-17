@@ -1,0 +1,39 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>net5.0-windows</TargetFramework>
+    <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
+    <UseWPF>true</UseWPF>
+    <AssemblyName>LogoFX.Client.Theming.Platform</AssemblyName>
+    <RootNamespace>LogoFX.Client.Theming</RootNamespace>
+    <Version>2.2.2</Version>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <OutputPath>..\..\bin\net\Release</OutputPath>
+    <DocumentationFile>..\..\bin\net\Release\LogoFX.Client.Theming.Platform.xml</DocumentationFile>
+    <EmbedAllSources>True</EmbedAllSources>
+    <DebugType>embedded</DebugType>
+    <DebugSymbols>true</DebugSymbols>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="..\src\ColorEntryUtils.cs" Link="ColorEntryUtils.cs" />
+    <Compile Include="..\src\CompiledCustomStyle.cs" Link="CompiledCustomStyle.cs" />
+    <Compile Include="..\src\CustomColor.cs" Link="CustomColor.cs" />
+    <Compile Include="..\src\CustomControlStyleAttribute.cs" Link="CustomControlStyleAttribute.cs" />
+    <Compile Include="..\src\CustomStyleBase.cs" Link="CustomStyleBase.cs" />
+    <Compile Include="..\src\CustomStyleManager.cs" Link="CustomStyleManager.cs" />
+    <Compile Include="..\src\ICustomStyleManager.cs" Link="ICustomStyleManager.cs" />
+    <Compile Include="..\src\ITheme.cs" Link="ITheme.cs" />
+    <Compile Include="..\src\IThemeNotifyChanged.cs" Link="IThemeNotifyChanged.cs" />
+    <Compile Include="..\src\IThemesManager.cs" Link="IThemesManager.cs" />
+    <Compile Include="..\src\IThemeTree.cs" Link="IThemeTree.cs" />
+    <Compile Include="..\src\RawCustomStyle.cs" Link="RawCustomStyle.cs" />
+    <Compile Include="..\src\ThemeBase.cs" Link="ThemeBase.cs" />
+    <Compile Include="..\src\ThemeResourceDictionaryAttribute.cs" Link="ThemeResourceDictionaryAttribute.cs" />
+    <Compile Include="..\src\ThemesManager.cs" Link="ThemesManager.cs" />
+    <Compile Include="..\src\ThemeTree.cs" Link="ThemeTree.cs" />
+    <Compile Include="..\src\TypeTheme.cs" Link="TypeTheme.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\LogoFX.Client.Theming\LogoFX.Client.Theming.csproj" />
+  </ItemGroup>
+</Project>
