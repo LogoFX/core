@@ -2,15 +2,16 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2011/10/nuspec.xsd">
   <metadata>
     <id>LogoFX.Core</id>
-    <version>2.2.2</version>
-    <authors>Gennady Verdel,David Kossoglyad,Vlad Spivak,Dmitry Bublik</authors>
-    <owners>Gennady Verdel</owners>
+    <version>2.2.3</version>
+    <authors>Gennady Verdel, David Kossoglyad, Vlad Spivak, Dmitry Bublik</authors>
+    <owners>Gennady Verdel</owners>    
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
-    <projectUrl>https://github.com/LogoFX</projectUrl>
+    <licenseUrl>https://github.com/LogoFX/core/blob/main/LICENSE</licenseUrl>
+    <projectUrl>https://github.com/LogoFX/core</projectUrl>
     <iconUrl>https://github.com/LogoFX/logofx-assets/blob/master/icons/icon.png?raw=true</iconUrl>
     <description>LogoFX Core assemblies containing collections and weak objects implementations.</description>
     <releaseNotes>Improved notification management via dedicated interface.</releaseNotes>
     <tags>framework logofx core dotnet</tags>
-    <repository type="Open Source" url="https://github.com/LogoFX/logofx-core" />
+    <repository type="Open Source" url="https://github.com/LogoFX/core" />
   </metadata>
 </package>

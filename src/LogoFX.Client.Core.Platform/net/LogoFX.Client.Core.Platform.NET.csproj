@@ -5,7 +5,7 @@
     <AssemblyName>LogoFX.Client.Core.Platform</AssemblyName>
     <RootNamespace>LogoFX.Client.Core</RootNamespace>
     <UseWPF>true</UseWPF>
-    <Version>2.2.2</Version>
+    <Version>2.2.3</Version>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
     <OutputPath>..\..\Bin\net\Release</OutputPath>
