@@ -1,4 +1,4 @@
-version: 2.2.3.{build}
+version: 2.2.4.{build}
 init:
 - dotnet tool install --global SpecFlow.Plus.LivingDoc.CLI
 configuration: Release
@@ -22,9 +22,9 @@ artifacts:
 - name: Packages
   path: ./output/*.nupkg
 - name: IoC Living Documentation
-  path: ./src/LogoFX.Practices.IoC.Specs/bin/Release/LivingDoc.html
+  path: ./output/LogoFX.Practices.IoC.Specs.LivingDoc.html
 - name: Core Living Documentation
-  path: ./src/LogoFX.Client.Core.Specs/bin/Release/LivingDoc.html
+  path: ./output/LogoFX.Client.Core.Specs.LivingDoc.html
 - name: Platform Living Documentation
-  path: ./src/LogoFX.Client.Core.Platform.NETCore.Specs/bin/Release/LivingDoc.html
+  path: ./output/LogoFX.Client.Core.Platform.NETCore.Specs.LivingDoc.html
 ...
