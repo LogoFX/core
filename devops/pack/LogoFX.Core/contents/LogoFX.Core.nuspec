@@ -2,9 +2,9 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2011/10/nuspec.xsd">
   <metadata>
     <id>LogoFX.Core</id>
-    <version>2.2.3</version>
+    <version>2.2.4-rc1</version>
     <authors>Gennady Verdel, David Kossoglyad, Vlad Spivak, Dmitry Bublik</authors>
-    <owners>Gennady Verdel</owners>    
+    <owners>Gennady Verdel</owners>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <licenseUrl>https://github.com/LogoFX/core/blob/main/LICENSE</licenseUrl>
     <projectUrl>https://github.com/LogoFX/core</projectUrl>
