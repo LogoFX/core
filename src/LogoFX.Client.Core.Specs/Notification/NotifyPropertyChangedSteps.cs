@@ -2,6 +2,7 @@
 
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using FluentAssertions;
 using LogoFX.Client.Core.Specs.Common;
 using TechTalk.SpecFlow;
@@ -38,7 +39,7 @@ namespace LogoFX.Client.Core.Specs.Notification
         [When(@"The '(.*)' is created and all notifications are listened to")]
         public void WhenTheIsCreatedAndAllNotificationsAreListenedTo(string name)
         {
-            var @class = TestClassFactory.CreateTestClass(name);
+            var @class = TestClassFactory.CreateTestClass(Assembly.GetExecutingAssembly(), name);
             if (@class != null)
             {
                 _invocationScenarioDataStoreBase.Class = @class;

@@ -26,10 +26,11 @@ namespace LogoFX.Client.Core.Platform.NETCore.Specs
         }
 
         //TODO: Merge with the same class in LogoFX.Client.Core.Specs - pay attention to different dispatcher types
-        [When(@"The '(.*)' is created here with dispatcher")]
-        public void WhenTheIsCreatedHereWithParameter(string name)
+        //Use Step Argument Transformation - context-dependent
+        [When(@"The '(.*)' is created with dispatcher")]
+        public void WhenTheIsCreatedWithDispatcher(string name)
         {
-            var @class = TestClassHelper.CreateTestClassImpl(Assembly.GetExecutingAssembly(), name,
+            var @class = TestClassFactory.CreateTestClass(Assembly.GetExecutingAssembly(), name,
                 _dispatcherScenarioDataStoreBase.Dispatch);
             if (@class != null)
             {
