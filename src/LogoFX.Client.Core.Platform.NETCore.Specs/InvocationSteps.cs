@@ -2,6 +2,7 @@
 using System.Threading;
 using FluentAssertions;
 using LogoFX.Client.Core.Specs.Common;
+using LogoFX.Core.Specs.Common;
 using TechTalk.SpecFlow;
 
 namespace LogoFX.Client.Core.Platform.NETCore.Specs

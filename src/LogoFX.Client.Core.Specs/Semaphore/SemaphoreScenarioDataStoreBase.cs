@@ -1,5 +1,4 @@
 ﻿using Attest.Testing.Context.SpecFlow;
-using TechTalk.SpecFlow;
 
 namespace LogoFX.Client.Core.Specs.Semaphore
 {

@@ -1,11 +1,8 @@
 ﻿#nullable enable
 
-using System;
 using System.ComponentModel;
-using System.Linq;
-using System.Reflection;
 
-namespace LogoFX.Client.Core.Specs.Common
+namespace LogoFX.Core.Specs.Common
 {
     public static class TestClassHelper
     {
@@ -21,13 +18,6 @@ namespace LogoFX.Client.Core.Specs.Common
                 }
             };
             return isCalledRef;
-        }
-
-        internal static INotifyPropertyChanged CreateTestClassImpl(Assembly assembly, string name, params object?[]? args)
-        {
-            var types = assembly.DefinedTypes.ToArray();
-            var type = types.FirstOrDefault(t => t.Name == name)?.AsType();
-            return type == null ? null : Activator.CreateInstance(type, args) as INotifyPropertyChanged;
         }
     }
 }

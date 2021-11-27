@@ -1,6 +1,6 @@
 ﻿using System.Reflection;
 using LogoFX.Client.Core.Specs.Dispatcher;
-using TechTalk.SpecFlow;
+using LogoFX.Core.Specs.Common;
 
 namespace LogoFX.Client.Core.Specs.Common
 {

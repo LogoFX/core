@@ -12,9 +12,6 @@
   "plugins":[],
   "stepAssemblies": [
     {
-      "assembly": "LogoFX.Client.Core.Specs.Common"
-    },
-    {
       "assembly": "LogoFX.Core.Specs.Common"
     }
   ]

@@ -3,17 +3,15 @@
 using System;
 using System.ComponentModel;
 using System.Linq.Expressions;
+using System.Runtime.CompilerServices;
 
-namespace LogoFX.Client.Core
+namespace LogoFX.Core
 {
     /// <summary>
     /// Implements <see cref="INotifyPropertyChanged"/> on behalf of a container class.
     /// </summary>
-    /// <remarks>
-    /// <para>Use <see cref="NotifyPropertyChangedBase{TObject}"/> instead of this class if possible.</para>
-    /// </remarks>
     /// <typeparam name="T">The type of the containing class.</typeparam>
-    public sealed class NotifyPropertyChangedCore<T>
+    public sealed class NotifyPropertyChangedCore<T> : INotifyPropertyChanged, ISuppressNotify
     {
         /// <summary>
         /// The backing delegate for <see cref="PropertyChanged"/>.
@@ -68,5 +66,66 @@ namespace LogoFX.Client.Core
         {
             _propertyChanged.Raise(_obj, expression);
         }
+
+        public void OnPropertyChanged(string name = "")
+        {
+            _propertyChanged.Raise(this, name);
+        }
+
+        /// <summary>
+        /// Compares the current and new values. If they are different,
+        /// updates the respective field 
+        /// and fires the property change notification.
+        /// </summary>
+        /// <typeparam name="TProperty">The type of the property.</typeparam>
+        /// <param name="currentValue">The current value field reference.</param>
+        /// <param name="newValue">The new value.</param>
+        /// <param name="name">The property name.</param>
+        /// <param name="options">The set property options.</param>        
+        public void SetProperty<TProperty>(
+            ref TProperty currentValue,
+            TProperty newValue,
+            SetPropertyOptions options = null,
+            [CallerMemberName] string name = "")
+        {
+            if (Equals(currentValue, newValue))
+            {
+                return;
+            }
+
+            if (options?.CustomActionInvocation != null)
+            {
+                options.CustomActionInvocation(() =>
+                {
+                    options?.BeforeValueUpdate?.Invoke();
+                });
+                currentValue = newValue;
+                options.CustomActionInvocation(() =>
+                {
+                    if (!_notifyManager.IsMuted)
+                    {
+                        _propertyChanged.Raise(this, name);
+                    }
+                    options?.AfterValueUpdate?.Invoke();
+                });
+            }
+            else
+            {
+                options?.BeforeValueUpdate?.Invoke();
+                currentValue = newValue;
+                OnPropertyChanged(name);
+                options?.AfterValueUpdate?.Invoke();
+            }
+        }
+
+        private readonly INotifyManager _notifyManager = new NotifyManager();
+
+        IDisposable ISuppressNotify.SuppressNotify => SuppressNotify;
+
+        /// <summary>
+        /// Gets the suppress notify.
+        /// To be used in <c>using</c> statement.
+        /// </summary>
+        public IDisposable SuppressNotify => new SuppressNotifyHelper(_notifyManager);
     }
 }

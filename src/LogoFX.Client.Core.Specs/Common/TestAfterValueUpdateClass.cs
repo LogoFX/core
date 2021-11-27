@@ -1,3 +1,5 @@
+using LogoFX.Core;
+
 namespace LogoFX.Client.Core.Specs.Common
 {
     public class TestAfterValueUpdateClass : TestClassBase

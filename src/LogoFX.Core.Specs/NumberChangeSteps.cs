@@ -1,7 +1,6 @@
 ﻿using LogoFX.Core.Specs.Common;
-using TechTalk.SpecFlow;
 
-namespace LogoFX.Client.Core.Specs.Common
+namespace LogoFX.Core.Specs
 {
     [Binding]
     internal sealed class NumberChangeSteps

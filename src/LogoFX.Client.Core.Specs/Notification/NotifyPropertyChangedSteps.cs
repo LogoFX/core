@@ -3,9 +3,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
-using FluentAssertions;
 using LogoFX.Client.Core.Specs.Common;
-using TechTalk.SpecFlow;
+using LogoFX.Core.Specs.Common;
 
 namespace LogoFX.Client.Core.Specs.Notification
 {
@@ -50,14 +49,6 @@ namespace LogoFX.Client.Core.Specs.Notification
                 isCallRefCollection.Add(isTotalCalledRef);
                 _invocationScenarioDataStoreBase.IsCalledRefCollection = isCallRefCollection;
             }
-        }
-
-        [Then(@"The property change notification result is '(.*)'")]
-        public void ThenThePropertyChangeNotificationResultIs(string expectedResultStr)
-        {
-            bool.TryParse(expectedResultStr, out var expectedResult);
-            var isCalledRef = _invocationScenarioDataStoreBase.IsCalledRef;
-            isCalledRef.Value.Should().Be(expectedResult);
         }
 
         [Then(@"The property change notification result is '(.*)' for all notifications")]
