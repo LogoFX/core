@@ -6,9 +6,9 @@ using TechTalk.SpecFlow;
 namespace LogoFX.Core.Specs.Common
 {
     [Binding]
-    public sealed class InvocationScenarioDataStoreBase : ScenarioDataStoreBase
+    public sealed class InvocationScenarioDataStore : ScenarioDataStoreBase
     {
-        public InvocationScenarioDataStoreBase(ScenarioContext scenarioContext) : base(scenarioContext)
+        public InvocationScenarioDataStore(ScenarioContext scenarioContext) : base(scenarioContext)
         {
         }
 

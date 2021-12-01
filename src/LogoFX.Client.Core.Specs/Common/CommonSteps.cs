@@ -7,13 +7,13 @@ namespace LogoFX.Client.Core.Specs.Common
     [Binding]
     public sealed class CommonSteps
     {
-        private readonly DispatcherScenarioDataStoreBase<FakeDispatch> _dispatcherScenarioDataStoreBase;
-        private readonly InvocationScenarioDataStoreBase _invocationScenarioDataStoreBase;
+        private readonly DispatcherScenarioDataStore<FakeDispatch> _dispatcherScenarioDataStore;
+        private readonly InvocationScenarioDataStore _invocationScenarioDataStore;
 
         public CommonSteps(ScenarioContext scenarioContext)
         {
-            _dispatcherScenarioDataStoreBase = new DispatcherScenarioDataStoreBase<FakeDispatch>(scenarioContext);
-            _invocationScenarioDataStoreBase = new InvocationScenarioDataStoreBase(scenarioContext);
+            _dispatcherScenarioDataStore = new DispatcherScenarioDataStore<FakeDispatch>(scenarioContext);
+            _invocationScenarioDataStore = new InvocationScenarioDataStore(scenarioContext);
         }
 
         [When(@"The '(.*)' is created")]
@@ -23,20 +23,20 @@ namespace LogoFX.Client.Core.Specs.Common
             if (@class != null)
             {
                 var isCalledRef = TestClassHelper.ListenToPropertyChange(@class, "Number");
-                _invocationScenarioDataStoreBase.Class = @class;
-                _invocationScenarioDataStoreBase.IsCalledRef = isCalledRef;
+                _invocationScenarioDataStore.Class = @class;
+                _invocationScenarioDataStore.IsCalledRef = isCalledRef;
             }
         }
 
         [When(@"The '(.*)' is created with dispatcher")]
         public void WhenTheIsCreatedWithDispatcher(string name)
         {
-            var @class = TestClassFactory.CreateTestClass(Assembly.GetExecutingAssembly(), name, _dispatcherScenarioDataStoreBase.Dispatch);
+            var @class = TestClassFactory.CreateTestClass(Assembly.GetExecutingAssembly(), name, _dispatcherScenarioDataStore.Dispatch);
             if (@class != null)
             {
                 var isCalledRef = TestClassHelper.ListenToPropertyChange(@class, "Number");
-                _invocationScenarioDataStoreBase.Class = @class;
-                _invocationScenarioDataStoreBase.IsCalledRef = isCalledRef;
+                _invocationScenarioDataStore.Class = @class;
+                _invocationScenarioDataStore.IsCalledRef = isCalledRef;
             }
         }
 
@@ -47,15 +47,15 @@ namespace LogoFX.Client.Core.Specs.Common
             if (@class != null)
             {
                 var isCalledRef = TestClassHelper.ListenToPropertyChange(@class, string.Empty);
-                _invocationScenarioDataStoreBase.Class = @class;
-                _invocationScenarioDataStoreBase.IsCalledRef = isCalledRef;
+                _invocationScenarioDataStore.Class = @class;
+                _invocationScenarioDataStore.IsCalledRef = isCalledRef;
             }
         }
 
         [When(@"The all properties change is invoked")]
         public void WhenTheAllPropertiesChangeIsInvoked()
         {
-            var @class = _invocationScenarioDataStoreBase.Class as TestNameClass;
+            var @class = _invocationScenarioDataStore.Class as TestNameClass;
             @class.Refresh();
         }
     }

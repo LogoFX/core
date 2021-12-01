@@ -3,9 +3,9 @@ using TechTalk.SpecFlow;
 
 namespace LogoFX.Practices.IoC.Specs
 {
-    internal sealed class ContainerScenarioDataStoreBase : ScenarioDataStoreBase
+    internal sealed class ContainerScenarioDataStore : ScenarioDataStoreBase
     {
-        public ContainerScenarioDataStoreBase(ScenarioContext scenarioContext) : base(scenarioContext)
+        public ContainerScenarioDataStore(ScenarioContext scenarioContext) : base(scenarioContext)
         {
         }
 

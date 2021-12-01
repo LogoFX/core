@@ -6,11 +6,11 @@ namespace LogoFX.Core.Specs
     [Binding]
     public sealed class CommonSteps
     {
-        private readonly InvocationScenarioDataStoreBase _invocationScenarioDataStoreBase;
+        private readonly InvocationScenarioDataStore _invocationScenarioDataStore;
 
         public CommonSteps(ScenarioContext scenarioContext)
         {
-            _invocationScenarioDataStoreBase = new InvocationScenarioDataStoreBase(scenarioContext);
+            _invocationScenarioDataStore = new InvocationScenarioDataStore(scenarioContext);
         }
 
         [When(@"The '(.*)' is created")]
@@ -20,8 +20,8 @@ namespace LogoFX.Core.Specs
             if (@class != null)
             {
                 var isCalledRef = TestClassHelper.ListenToPropertyChange(@class, "Number");
-                _invocationScenarioDataStoreBase.Class = @class;
-                _invocationScenarioDataStoreBase.IsCalledRef = isCalledRef;
+                _invocationScenarioDataStore.Class = @class;
+                _invocationScenarioDataStore.IsCalledRef = isCalledRef;
             }
         }
     }

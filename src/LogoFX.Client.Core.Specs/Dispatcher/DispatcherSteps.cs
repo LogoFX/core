@@ -6,18 +6,18 @@ namespace LogoFX.Client.Core.Specs.Dispatcher
     [Binding]
     internal sealed class DispatcherSteps
     {
-        private readonly DispatcherScenarioDataStoreBase<FakeDispatch> _scenarioDataStoreBase;
+        private readonly DispatcherScenarioDataStore<FakeDispatch> _scenarioDataStore;
 
         public DispatcherSteps(ScenarioContext scenarioContext)
         {
-            _scenarioDataStoreBase = new DispatcherScenarioDataStoreBase<FakeDispatch>(scenarioContext);
+            _scenarioDataStore = new DispatcherScenarioDataStore<FakeDispatch>(scenarioContext);
         }
 
         [Given(@"The dispatcher is set to test dispatcher")]
         public void GivenTheDispatcherIsSetToTestDispatcher()
         {
             var dispatch = new FakeDispatch();
-            _scenarioDataStoreBase.Dispatch = dispatch;
+            _scenarioDataStore.Dispatch = dispatch;
             Dispatch.Current = dispatch;
         }
 
@@ -25,20 +25,20 @@ namespace LogoFX.Client.Core.Specs.Dispatcher
         public void GivenTheDispatcherIsSetToOverriddenDispatcher()
         {
             var dispatch = new OverriddenDispatch();
-            _scenarioDataStoreBase.Dispatch = dispatch;
+            _scenarioDataStore.Dispatch = dispatch;
         }
 
         [Then(@"The property change notification is raised via the test dispatcher")]
         public void ThenThePropertyChangeNotificationIsRaisedViaTheTestDispatcher()
         {
-            var fakeDispatch = _scenarioDataStoreBase.Dispatch;
+            var fakeDispatch = _scenarioDataStore.Dispatch;
             fakeDispatch.IsOnUiThreadCalled.Should().BeTrue();
         }
 
         [Then(@"The property change notification is raised via the overridden dispatcher")]
         public void ThenThePropertyChangeNotificationIsRaisedViaTheOverriddenDispatcher()
         {
-            var fakeDispatch = _scenarioDataStoreBase.Dispatch;
+            var fakeDispatch = _scenarioDataStore.Dispatch;
             fakeDispatch.IsOnUiThreadCalled.Should().BeTrue();
             fakeDispatch.Should().BeOfType<OverriddenDispatch>();
         }

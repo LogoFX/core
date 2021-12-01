@@ -4,9 +4,9 @@ using TechTalk.SpecFlow;
 namespace LogoFX.Client.Core.Specs.Common
 {
     [Binding]
-    public sealed class DispatcherScenarioDataStoreBase<TDispatch> : ScenarioDataStoreBase
+    public sealed class DispatcherScenarioDataStore<TDispatch> : ScenarioDataStoreBase
     {
-        public DispatcherScenarioDataStoreBase(ScenarioContext scenarioContext) : base(scenarioContext)
+        public DispatcherScenarioDataStore(ScenarioContext scenarioContext) : base(scenarioContext)
         {
         }
 

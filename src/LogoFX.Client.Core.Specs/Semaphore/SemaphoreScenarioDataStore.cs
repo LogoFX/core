@@ -2,9 +2,9 @@
 
 namespace LogoFX.Client.Core.Specs.Semaphore
 {
-    internal sealed class SemaphoreScenarioDataStoreBase : ScenarioDataStoreBase
+    internal sealed class SemaphoreScenarioDataStore : ScenarioDataStoreBase
     {
-        public SemaphoreScenarioDataStoreBase(ScenarioContext scenarioContext) : base(scenarioContext)
+        public SemaphoreScenarioDataStore(ScenarioContext scenarioContext) : base(scenarioContext)
         {
         }
 
