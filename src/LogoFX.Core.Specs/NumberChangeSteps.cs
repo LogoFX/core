@@ -12,7 +12,17 @@ namespace LogoFX.Core.Specs
             _invocationScenarioDataStoreBase = new InvocationScenarioDataStoreBase(scenarioContext);
         }
 
-        [When(@"The number is changed to (.*)  in regular mode")]
+        [When(@"The number is changed to (.*) in silent mode")]
+        public void WhenTheNumberIsChangedToInSilentMode(int value)
+        {
+            var @class = _invocationScenarioDataStoreBase.Class as TestClassBase;
+            @class.UpdateSilent(() =>
+            {
+                @class.Number = value;
+            });
+        }
+
+        [When(@"The number is changed to (.*) in regular mode")]
         public void WhenTheNumberIsChangedToInRegularMode(int value)
         {
             var @class = _invocationScenarioDataStoreBase.Class as TestClassBase;

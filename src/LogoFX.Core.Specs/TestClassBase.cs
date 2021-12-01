@@ -11,5 +11,7 @@ namespace LogoFX.Core.Specs
             get;
             set;
         }
+
+        public abstract void UpdateSilent(Action action);
     }
 }

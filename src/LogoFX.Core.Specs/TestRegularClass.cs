@@ -24,5 +24,13 @@ namespace LogoFX.Core.Specs
             add => NotifyPropertyChanged.PropertyChanged += value;
             remove => NotifyPropertyChanged.PropertyChanged -= value;
         }
+
+        public override void UpdateSilent(Action action)
+        {
+            using (NotifyPropertyChanged.SuppressNotify)
+            {
+                action();
+            }
+        }
     }
 }

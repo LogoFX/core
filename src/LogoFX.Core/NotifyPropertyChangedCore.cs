@@ -55,7 +55,7 @@ namespace LogoFX.Core
         /// <param name="expression">The lambda expression identifying the property that changed.</param>
         public void OnPropertyChanged<TProperty>(Expression<Func<T, TProperty>> expression)
         {
-            _propertyChanged.Raise(_obj, expression);
+            InvokeAction(() => _propertyChanged.Raise(_obj, expression));
         }
         /// <summary>
         /// Raises <see cref="PropertyChanged"/> for the given property.
@@ -64,12 +64,12 @@ namespace LogoFX.Core
         /// <param name="expression">The lambda expression identifying the property that changed.</param>
         public void OnPropertyChanged<TProperty>(Expression<Func<TProperty>> expression)
         {
-            _propertyChanged.Raise(_obj, expression);
+            InvokeAction(() => _propertyChanged.Raise(_obj, expression));
         }
 
-        public void OnPropertyChanged(string name = "")
+        public void OnPropertyChanged([CallerMemberName] string name = "")
         {
-            _propertyChanged.Raise(this, name);
+            InvokeAction(() => _propertyChanged.Raise(this, name));
         }
 
         /// <summary>
@@ -88,6 +88,16 @@ namespace LogoFX.Core
             SetPropertyOptions options = null,
             [CallerMemberName] string name = "")
         {
+            //Can't use delegate here because of ref parameter
+            if (!_notifyManager.IsMuted)
+            {
+                SetPropertyImpl(ref currentValue, newValue, options, name);
+            }
+        }
+
+        private void SetPropertyImpl<TProperty>(ref TProperty currentValue, TProperty newValue, SetPropertyOptions options,
+            string name)
+        {
             if (Equals(currentValue, newValue))
             {
                 return;
@@ -95,10 +105,7 @@ namespace LogoFX.Core
 
             if (options?.CustomActionInvocation != null)
             {
-                options.CustomActionInvocation(() =>
-                {
-                    options?.BeforeValueUpdate?.Invoke();
-                });
+                options.CustomActionInvocation(() => { options?.BeforeValueUpdate?.Invoke(); });
                 currentValue = newValue;
                 options.CustomActionInvocation(() =>
                 {
@@ -106,6 +113,7 @@ namespace LogoFX.Core
                     {
                         _propertyChanged.Raise(this, name);
                     }
+
                     options?.AfterValueUpdate?.Invoke();
                 });
             }
@@ -127,5 +135,13 @@ namespace LogoFX.Core
         /// To be used in <c>using</c> statement.
         /// </summary>
         public IDisposable SuppressNotify => new SuppressNotifyHelper(_notifyManager);
+
+        private void InvokeAction(Action action)
+        {
+            if (!_notifyManager.IsMuted)
+            {
+                action();
+            }
+        }
     }
 }

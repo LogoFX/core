@@ -116,9 +116,56 @@ this.ScenarioInitialize(scenarioInfo);
  testRunner.When(string.Format("The \'{0}\' is created", name), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
 #line 8
- testRunner.And("The number is changed to 5  in regular mode", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+ testRunner.And("The number is changed to 5 in regular mode", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
 #line 9
+ testRunner.Then(string.Format("The property change notification result is \'{0}\'", result), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line hidden
+            }
+            this.ScenarioCleanup();
+        }
+        
+        [Xunit.SkippableTheoryAttribute(DisplayName="Single property change in silent mode should not raise property change notificati" +
+            "on")]
+        [Xunit.TraitAttribute("FeatureTitle", "Notification")]
+        [Xunit.TraitAttribute("Description", "Single property change in silent mode should not raise property change notificati" +
+            "on")]
+        [Xunit.InlineDataAttribute("TestNameClass", "false", new string[0])]
+        public virtual void SinglePropertyChangeInSilentModeShouldNotRaisePropertyChangeNotification(string name, string result, string[] exampleTags)
+        {
+            string[] tagsOfScenario = exampleTags;
+            System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
+            argumentsOfScenario.Add("Name", name);
+            argumentsOfScenario.Add("Result", result);
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Single property change in silent mode should not raise property change notificati" +
+                    "on", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
+#line 15
+this.ScenarioInitialize(scenarioInfo);
+#line hidden
+            bool isScenarioIgnored = default(bool);
+            bool isFeatureIgnored = default(bool);
+            if ((tagsOfScenario != null))
+            {
+                isScenarioIgnored = tagsOfScenario.Where(__entry => __entry != null).Where(__entry => String.Equals(__entry, "ignore", StringComparison.CurrentCultureIgnoreCase)).Any();
+            }
+            if ((this._featureTags != null))
+            {
+                isFeatureIgnored = this._featureTags.Where(__entry => __entry != null).Where(__entry => String.Equals(__entry, "ignore", StringComparison.CurrentCultureIgnoreCase)).Any();
+            }
+            if ((isScenarioIgnored || isFeatureIgnored))
+            {
+                testRunner.SkipScenario();
+            }
+            else
+            {
+                this.ScenarioStart();
+#line 16
+ testRunner.When(string.Format("The \'{0}\' is created", name), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line hidden
+#line 17
+ testRunner.And("The number is changed to 5 in silent mode", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line hidden
+#line 18
  testRunner.Then(string.Format("The property change notification result is \'{0}\'", result), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             }

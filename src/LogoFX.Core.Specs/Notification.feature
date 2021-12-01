@@ -5,21 +5,21 @@
 
 Scenario Outline: Single property change in regular mode should raise property change notification
 	When The '<Name>' is created
-	And The number is changed to 5  in regular mode
+	And The number is changed to 5 in regular mode
 	Then The property change notification result is '<Result>'
 
 Examples:
 | Name             | Result |
 | TestRegularClass | true   |
 
-#Scenario Outline: Single property change in silent mode should not raise property change notification
-#	When The '<Name>' is created
-#	And The number is changed to 5 in silent mode
-#	Then The property change notification result is '<Result>'
-#
-#Examples:
-#| Name                  | Result |
-#| TestNameClass         | false  |
+Scenario Outline: Single property change in silent mode should not raise property change notification
+	When The '<Name>' is created
+	And The number is changed to 5 in silent mode
+	Then The property change notification result is '<Result>'
+
+Examples:
+| Name                  | Result |
+| TestNameClass         | false  |
 #| TestExpressionClass   | false  |
 #
 #Scenario: Changing single property via SetProperty API should raise property change notification
