@@ -1,4 +1,4 @@
-# Core facilties
+# Core facilities
 
 <img src=https://ci.appveyor.com/api/projects/status/github/logofx/core>
 
