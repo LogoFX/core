@@ -1,36 +1,18 @@
-using System.ComponentModel;
-
-namespace LogoFX.Core.Specs
+namespace LogoFX.Core.Specs;
+public class TestRegularClass : TestClassBase
 {
-    public class TestRegularClass : TestClassBase
+    public TestRegularClass()
     {
-        protected readonly NotifyPropertyChangedCore<TestRegularClass> NotifyPropertyChanged;
+        NotifyPropertyChanged = new NotifyPropertyChangedCore<TestRegularClass>(this);
+    }
 
-        public TestRegularClass()
-        {
-            NotifyPropertyChanged = new NotifyPropertyChangedCore<TestRegularClass>(this);
-        }
+    protected override NotifyPropertyChangedCore<TestRegularClass> NotifyPropertyChanged { get; }
 
-        private int _number;
+    private int _number;
 
-        public override int Number
-        {
-            get => _number;
-            set => NotifyPropertyChanged.SetProperty(ref _number, value);
-        }
-
-        public override event PropertyChangedEventHandler? PropertyChanged
-        {
-            add => NotifyPropertyChanged.PropertyChanged += value;
-            remove => NotifyPropertyChanged.PropertyChanged -= value;
-        }
-
-        public override void UpdateSilent(Action action)
-        {
-            using (NotifyPropertyChanged.SuppressNotify)
-            {
-                action();
-            }
-        }
+    public override int Number
+    {
+        get => _number;
+        set => NotifyPropertyChanged.SetProperty(ref _number, value);
     }
 }

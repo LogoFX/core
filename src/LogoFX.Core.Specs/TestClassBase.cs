@@ -1,17 +1,28 @@
 ﻿using System.ComponentModel;
+namespace LogoFX.Core.Specs;
 
-namespace LogoFX.Core.Specs
+public abstract class TestClassBase : INotifyPropertyChanged
 {
-    public abstract class TestClassBase : INotifyPropertyChanged
+    protected abstract INotifyPropertyChanged NotifyPropertyChanged { get; }
+
+    public abstract int Number
     {
-        public abstract event PropertyChangedEventHandler? PropertyChanged;
+        get;
+        set;
+    }
 
-        public abstract int Number
+    public event PropertyChangedEventHandler? PropertyChanged
+    {
+        add => NotifyPropertyChanged.PropertyChanged += value;
+        remove => NotifyPropertyChanged.PropertyChanged -= value;
+    }
+
+    public void UpdateSilent(Action action)
+    {
+        using (((ISuppressNotify)NotifyPropertyChanged).SuppressNotify)
         {
-            get;
-            set;
+            action();
         }
-
-        public abstract void UpdateSilent(Action action);
     }
 }
+

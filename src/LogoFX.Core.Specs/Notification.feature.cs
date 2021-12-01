@@ -131,6 +131,7 @@ this.ScenarioInitialize(scenarioInfo);
         [Xunit.TraitAttribute("Description", "Single property change in silent mode should not raise property change notificati" +
             "on")]
         [Xunit.InlineDataAttribute("TestNameClass", "false", new string[0])]
+        [Xunit.InlineDataAttribute("TestExpressionClass", "false", new string[0])]
         public virtual void SinglePropertyChangeInSilentModeShouldNotRaisePropertyChangeNotification(string name, string result, string[] exampleTags)
         {
             string[] tagsOfScenario = exampleTags;

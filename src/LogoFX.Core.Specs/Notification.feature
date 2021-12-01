@@ -20,7 +20,7 @@ Scenario Outline: Single property change in silent mode should not raise propert
 Examples:
 | Name                  | Result |
 | TestNameClass         | false  |
-#| TestExpressionClass   | false  |
+| TestExpressionClass   | false  |
 #
 #Scenario: Changing single property via SetProperty API should raise property change notification
 #	When The 'TestRegularClass' is created
