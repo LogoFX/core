@@ -1,26 +1,20 @@
 <Project Sdk="Microsoft.NET.Sdk">
-
   <PropertyGroup>
-	  <TargetFramework>netstandard2.0</TargetFramework>
-	  <IsPackable>false</IsPackable>
-	  <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <IsPackable>false</IsPackable>
+    <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
   </PropertyGroup>
-
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
     <LangVersion>8</LangVersion>
   </PropertyGroup>
-
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
     <LangVersion>8</LangVersion>
   </PropertyGroup>
-
   <ItemGroup>
     <PackageReference Include="Attest.Tests.SpecFlow" Version="2.4.3" />
   </ItemGroup>
-
   <ItemGroup>
     <ProjectReference Include="..\LogoFX.Client.Core\LogoFX.Client.Core.csproj" />
     <ProjectReference Include="..\LogoFX.Core.Specs.Common\LogoFX.Core.Specs.Common.csproj" />
   </ItemGroup>
-
 </Project>
