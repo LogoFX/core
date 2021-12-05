@@ -2,6 +2,7 @@
 using System.Threading;
 using FluentAssertions;
 using LogoFX.Client.Core.Specs.Common;
+using LogoFX.Core.Specs.Common;
 using TechTalk.SpecFlow;
 
 namespace LogoFX.Client.Core.Platform.NETCore.Specs
@@ -9,40 +10,41 @@ namespace LogoFX.Client.Core.Platform.NETCore.Specs
     [Binding]
     internal sealed class InvocationSteps
     {
-        private readonly DispatcherScenarioDataStoreBase<TestPlatformDispatch> _dispatcherScenarioDataStoreBase;
-        private readonly InvocationScenarioDataStoreBase _invocationScenarioDataStoreBase;
+        private readonly DispatcherScenarioDataStore<TestPlatformDispatch> _dispatcherScenarioDataStore;
+        private readonly InvocationScenarioDataStore _invocationScenarioDataStore;
 
         public InvocationSteps(ScenarioContext scenarioContext)
         {
-            _dispatcherScenarioDataStoreBase =
-                new DispatcherScenarioDataStoreBase<TestPlatformDispatch>(scenarioContext);
-            _invocationScenarioDataStoreBase = new InvocationScenarioDataStoreBase(scenarioContext);
+            _dispatcherScenarioDataStore =
+                new DispatcherScenarioDataStore<TestPlatformDispatch>(scenarioContext);
+            _invocationScenarioDataStore = new InvocationScenarioDataStore(scenarioContext);
         }
 
         [Given(@"The dispatcher is set to custom dispatcher")]
         public void GivenTheDispatcherIsSetToCustomDispatcher()
         {
-            _dispatcherScenarioDataStoreBase.Dispatch = new TestPlatformDispatch(new PlatformDispatch());
+            _dispatcherScenarioDataStore.Dispatch = new TestPlatformDispatch(new PlatformDispatch());
         }
 
         //TODO: Merge with the same class in LogoFX.Client.Core.Specs - pay attention to different dispatcher types
-        [When(@"The '(.*)' is created here with dispatcher")]
-        public void WhenTheIsCreatedHereWithParameter(string name)
+        //Use Step Argument Transformation - context-dependent
+        [When(@"The '(.*)' is created with dispatcher")]
+        public void WhenTheIsCreatedWithDispatcher(string name)
         {
-            var @class = TestClassHelper.CreateTestClassImpl(Assembly.GetExecutingAssembly(), name,
-                _dispatcherScenarioDataStoreBase.Dispatch);
+            var @class = TestClassFactory.CreateTestClass(Assembly.GetExecutingAssembly(), name,
+                _dispatcherScenarioDataStore.Dispatch);
             if (@class != null)
             {
                 var isCalledRef = TestClassHelper.ListenToPropertyChange(@class, "Number");
-                _invocationScenarioDataStoreBase.Class = @class;
-                _invocationScenarioDataStoreBase.IsCalledRef = isCalledRef;
+                _invocationScenarioDataStore.Class = @class;
+                _invocationScenarioDataStore.IsCalledRef = isCalledRef;
             }
         }
 
         [Then(@"The property change notification is raised via the custom action invocation")]
         public void ThenThePropertyChangeNotificationIsRaisedViaTheCustomActionInvocation()
         {
-            var fakeDispatch = _dispatcherScenarioDataStoreBase.Dispatch;
+            var fakeDispatch = _dispatcherScenarioDataStore.Dispatch;
             fakeDispatch.IsCustomActionInvoked.Should().BeTrue();
         }
     }

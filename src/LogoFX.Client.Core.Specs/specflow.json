@@ -1,13 +1,21 @@
 {
-    "bindingCulture": {
-        "language": "en-us"
+  "bindingCulture": {
+    "language": "en-us"
+  },
+  "language": {
+    "feature": "en-us"
+  },
+  "livingDocGenerator": {
+    "enabled": true,
+    "filePath": "TestExecution.json"
+  },
+  "plugins":[],
+  "stepAssemblies": [
+    {
+      "assembly": "LogoFX.Client.Core.Specs.Common"
     },
-    "language": {
-        "feature": "en-us"
-    },
-    "livingDocGenerator": {
-        "enabled": true,
-        "filePath": "TestExecution.json"
-    },
-    "plugins": []
+    {
+      "assembly": "LogoFX.Core.Specs.Common"
+    }
+  ]
 }

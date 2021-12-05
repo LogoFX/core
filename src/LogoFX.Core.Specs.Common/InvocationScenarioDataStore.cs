@@ -3,12 +3,12 @@ using System.ComponentModel;
 using Attest.Testing.Context.SpecFlow;
 using TechTalk.SpecFlow;
 
-namespace LogoFX.Client.Core.Specs.Common
+namespace LogoFX.Core.Specs.Common
 {
     [Binding]
-    public sealed class InvocationScenarioDataStoreBase : ScenarioDataStoreBase
+    public sealed class InvocationScenarioDataStore : ScenarioDataStoreBase
     {
-        public InvocationScenarioDataStoreBase(ScenarioContext scenarioContext) : base(scenarioContext)
+        public InvocationScenarioDataStore(ScenarioContext scenarioContext) : base(scenarioContext)
         {
         }
 

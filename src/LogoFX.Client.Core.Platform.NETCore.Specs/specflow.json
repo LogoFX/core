@@ -12,7 +12,7 @@
   "plugins": [],
   "stepAssemblies": [
     {
-      "assembly": "LogoFX.Client.Core.Specs"
+      "assembly": "LogoFX.Client.Core.Specs.Common"
     }
   ]
 }

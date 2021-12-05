@@ -116,7 +116,7 @@ this.ScenarioInitialize(scenarioInfo);
  testRunner.Given("The dispatcher is set to custom dispatcher", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
 #line 8
- testRunner.When("The \'TestCustomActionInvocationClass\' is created here with dispatcher", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+ testRunner.When("The \'TestCustomActionInvocationClass\' is created with dispatcher", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
 #line 9
  testRunner.And("The number is changed to 5 via SetProperty API", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
