@@ -1,11 +1,12 @@
 //note: I don't know who is responsible for writing out the most of this excellent stuff
 //note: If you feel you are somehow involved and not mentioned in credits - let me know
+
 using System;
 using System.Diagnostics;
 using System.Linq.Expressions;
 using System.Reflection;
 
-namespace LogoFX.Client.Core
+namespace LogoFX.Core
 {
     /// <remarks>
     /// - ideas from http://michaelsync.net/2009/04/09/silverlightwpf-implementing-propertychanged-with-expression-tree

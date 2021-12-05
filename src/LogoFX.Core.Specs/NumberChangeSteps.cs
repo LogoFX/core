@@ -1,7 +1,6 @@
 ﻿using LogoFX.Core.Specs.Common;
-using TechTalk.SpecFlow;
 
-namespace LogoFX.Client.Core.Specs.Common
+namespace LogoFX.Core.Specs
 {
     [Binding]
     internal sealed class NumberChangeSteps
@@ -13,7 +12,17 @@ namespace LogoFX.Client.Core.Specs.Common
             _invocationScenarioDataStore = new InvocationScenarioDataStore(scenarioContext);
         }
 
-        [When(@"The number is changed to (.*)  in regular mode")]
+        [When(@"The number is changed to (.*) in silent mode")]
+        public void WhenTheNumberIsChangedToInSilentMode(int value)
+        {
+            var @class = _invocationScenarioDataStore.Class as TestClassBase;
+            @class.UpdateSilent(() =>
+            {
+                @class.Number = value;
+            });
+        }
+
+        [When(@"The number is changed to (.*) in regular mode")]
         public void WhenTheNumberIsChangedToInRegularMode(int value)
         {
             var @class = _invocationScenarioDataStore.Class as TestClassBase;

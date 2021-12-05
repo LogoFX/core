@@ -1,4 +1,4 @@
-﻿namespace LogoFX.Client.Core.Specs.Common
+﻿namespace LogoFX.Core.Specs.Common
 {
     public class ValueWrapper
     {

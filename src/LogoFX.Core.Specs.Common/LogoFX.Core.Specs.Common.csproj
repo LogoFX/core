@@ -12,9 +12,6 @@
   </PropertyGroup>
   <ItemGroup>
     <PackageReference Include="Attest.Tests.SpecFlow" Version="2.4.3" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\LogoFX.Client.Core\LogoFX.Client.Core.csproj" />
-    <ProjectReference Include="..\LogoFX.Core.Specs.Common\LogoFX.Core.Specs.Common.csproj" />
+    <PackageReference Include="FluentAssertions" Version="6.2.0" />
   </ItemGroup>
 </Project>

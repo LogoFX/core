@@ -1,5 +1,4 @@
 ﻿using System.Threading;
-using TechTalk.SpecFlow;
 
 namespace LogoFX.Client.Core.Specs.Common
 {
