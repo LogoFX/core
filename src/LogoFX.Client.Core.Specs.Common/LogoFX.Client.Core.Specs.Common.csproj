@@ -11,7 +11,7 @@
     <LangVersion>8</LangVersion>
   </PropertyGroup>
   <ItemGroup>
-    <PackageReference Include="Attest.Tests.SpecFlow" Version="2.4.4" />
+    <PackageReference Include="Attest.Tests.SpecFlow" Version="2.4.5-rc1" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\LogoFX.Client.Core\LogoFX.Client.Core.csproj" />
