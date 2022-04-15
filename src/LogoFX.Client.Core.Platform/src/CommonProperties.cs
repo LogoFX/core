@@ -1,9 +1,6 @@
 ﻿#if NET || NETCORE
 using System.Windows;
 #endif
-#if NETFX_CORE || WINDOWS_UWP
-using Windows.UI.Xaml;
-#endif
 
 namespace LogoFX.Client.Core
 {

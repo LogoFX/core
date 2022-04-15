@@ -24,7 +24,7 @@ namespace LogoFX.Client.Core.Platform.NETCore.Specs
         
         private static TechTalk.SpecFlow.ITestRunner testRunner;
         
-        private string[] _featureTags = ((string[])(null));
+        private static string[] featureTags = ((string[])(null));
         
         private Xunit.Abstractions.ITestOutputHelper _testOutputHelper;
         
@@ -41,7 +41,7 @@ namespace LogoFX.Client.Core.Platform.NETCore.Specs
         {
             testRunner = TechTalk.SpecFlow.TestRunnerManager.GetTestRunner();
             TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "", "Invocation", "\tIn order to support different app use cases\r\n\tAs an app developer\r\n\tI want the f" +
-                    "ramework to support platform-specific action invocation", ProgrammingLanguage.CSharp, ((string[])(null)));
+                    "ramework to support platform-specific action invocation", ProgrammingLanguage.CSharp, featureTags);
             testRunner.OnFeatureStart(featureInfo);
         }
         
@@ -51,27 +51,27 @@ namespace LogoFX.Client.Core.Platform.NETCore.Specs
             testRunner = null;
         }
         
-        public virtual void TestInitialize()
+        public void TestInitialize()
         {
         }
         
-        public virtual void TestTearDown()
+        public void TestTearDown()
         {
             testRunner.OnScenarioEnd();
         }
         
-        public virtual void ScenarioInitialize(TechTalk.SpecFlow.ScenarioInfo scenarioInfo)
+        public void ScenarioInitialize(TechTalk.SpecFlow.ScenarioInfo scenarioInfo)
         {
             testRunner.OnScenarioInitialize(scenarioInfo);
             testRunner.ScenarioContext.ScenarioContainer.RegisterInstanceAs<Xunit.Abstractions.ITestOutputHelper>(_testOutputHelper);
         }
         
-        public virtual void ScenarioStart()
+        public void ScenarioStart()
         {
             testRunner.OnScenarioStart();
         }
         
-        public virtual void ScenarioCleanup()
+        public void ScenarioCleanup()
         {
             testRunner.CollectScenarioErrors();
         }
@@ -86,26 +86,16 @@ namespace LogoFX.Client.Core.Platform.NETCore.Specs
         [Xunit.TraitAttribute("FeatureTitle", "Invocation")]
         [Xunit.TraitAttribute("Description", "Changing single property with custom action invocation should invoke actions via " +
             "custom route")]
-        public virtual void ChangingSinglePropertyWithCustomActionInvocationShouldInvokeActionsViaCustomRoute()
+        public void ChangingSinglePropertyWithCustomActionInvocationShouldInvokeActionsViaCustomRoute()
         {
             string[] tagsOfScenario = ((string[])(null));
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Changing single property with custom action invocation should invoke actions via " +
-                    "custom route", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
+                    "custom route", null, tagsOfScenario, argumentsOfScenario, featureTags);
 #line 6
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
-            bool isScenarioIgnored = default(bool);
-            bool isFeatureIgnored = default(bool);
-            if ((tagsOfScenario != null))
-            {
-                isScenarioIgnored = tagsOfScenario.Where(__entry => __entry != null).Where(__entry => String.Equals(__entry, "ignore", StringComparison.CurrentCultureIgnoreCase)).Any();
-            }
-            if ((this._featureTags != null))
-            {
-                isFeatureIgnored = this._featureTags.Where(__entry => __entry != null).Where(__entry => String.Equals(__entry, "ignore", StringComparison.CurrentCultureIgnoreCase)).Any();
-            }
-            if ((isScenarioIgnored || isFeatureIgnored))
+            if ((TagHelper.ContainsIgnoreTag(tagsOfScenario) || TagHelper.ContainsIgnoreTag(featureTags)))
             {
                 testRunner.SkipScenario();
             }
