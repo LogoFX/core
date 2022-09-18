@@ -3,7 +3,6 @@
 using System.Windows;
 #endif
 
-
 using System.Diagnostics.CodeAnalysis;
 #if WINUI3
 using Microsoft.UI.Xaml;
