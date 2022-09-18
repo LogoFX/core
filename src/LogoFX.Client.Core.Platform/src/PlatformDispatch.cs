@@ -48,7 +48,7 @@ namespace System.Threading
             {
                 if (!async &&
 #if !WINUI3
-						dispatcher.CheckAccess();
+						dispatcher.CheckAccess()
 #else
 						dispatcher.HasThreadAccess
 #endif
@@ -59,7 +59,7 @@ namespace System.Threading
                 else
                 {
 #if !WINUI3
-                    dispatcher.TryEnqueue(action, priority);
+                    dispatcher.BeginInvoke(action, priority);
 #else
 	                dispatcher.TryEnqueue(priority, () => action());
 #endif
@@ -79,7 +79,12 @@ namespace System.Threading
         /// <param name="priority">Desired priority</param>
         /// <param name="action">Action</param>
         public void BeginOnUiThread(
-            DispatcherQueuePriority priority, Action action)
+#if !WINUI3
+	        DispatcherPriority priority,
+#else
+            DispatcherQueuePriority priority,
+#endif 
+            Action action)
         {
             EnsureDispatch();
             _dispatch(action, true, priority);
@@ -97,7 +102,12 @@ namespace System.Threading
         /// <param name="priority">Desired priority</param>
         /// <param name="action">Action</param>
         public void OnUiThread(
-            DispatcherQueuePriority priority, Action action)
+#if !WINUI3
+	        DispatcherPriority priority,
+#else
+            DispatcherQueuePriority priority, 
+#endif
+			Action action)
         {
             EnsureDispatch();
             _dispatch(action, false, priority);
