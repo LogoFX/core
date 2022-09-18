@@ -1,5 +1,12 @@
-﻿#if NET || NETCORE
+﻿
+#if (NET || NETCORE) && !WINUI3
 using System.Windows;
+#endif
+
+
+using System.Diagnostics.CodeAnalysis;
+#if WINUI3
+using Microsoft.UI.Xaml;
 #endif
 
 namespace LogoFX.Client.Core
@@ -14,6 +21,7 @@ namespace LogoFX.Client.Core
         /// </summary>
         /// <param name="obj"></param>
         /// <returns></returns>
+        [SuppressMessage("ReSharper", "UnusedMember.Global")]
         public static DependencyObject GetOwner(DependencyObject obj)
         {
             return (DependencyObject)obj.GetValue(OwnerProperty);
@@ -24,6 +32,7 @@ namespace LogoFX.Client.Core
         /// </summary>
         /// <param name="obj"></param>
         /// <param name="value"></param>
+        [SuppressMessage("ReSharper", "UnusedMember.Global")]
         public static void SetOwner(DependencyObject obj, DependencyObject value)
         {
             obj.SetValue(OwnerProperty, value);

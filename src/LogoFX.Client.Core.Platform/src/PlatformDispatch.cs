@@ -1,5 +1,13 @@
-using System.Windows.Threading;
+using System.Diagnostics.CodeAnalysis;
 using LogoFX.Client.Core;
+
+#if !WINUI3
+using System.Windows.Threading;
+#endif
+
+#if WINUI3
+using Microsoft.UI.Dispatching;
+#endif
 
 // ReSharper disable once CheckNamespace
 namespace System.Threading
@@ -7,10 +15,14 @@ namespace System.Threading
     /// <summary>
     /// Platform-specific dispatcher
     /// </summary>
+    [SuppressMessage("ReSharper", "UnusedMember.Global")]
     public class PlatformDispatch : IDispatch
     {
-        private Action<Action, bool, DispatcherPriority> _dispatch;        
-
+#if !WINUI3
+        private Action<Action, bool, DispatcherPriority> _dispatch;
+#else
+		private Action<Action, bool, DispatcherQueuePriority> _dispatch;
+#endif
         private void EnsureDispatch()
         {
             if (_dispatch == null)
@@ -24,19 +36,34 @@ namespace System.Threading
         /// </summary>
         public void InitializeDispatch()
         {
-            var dispatcher = Dispatcher.CurrentDispatcher;
+	        var dispatcher
+#if !WINUI3
+                = Dispatcher.CurrentDispatcher;
+#else
+		        = DispatcherQueue.GetForCurrentThread();
+#endif
             if (dispatcher == null)
                 throw new InvalidOperationException("Dispatch is not initialized correctly");
-            _dispatch = (action, @async, priority) =>
+            _dispatch = (action, async, priority) =>
             {
-                if (!@async && dispatcher.CheckAccess())
+                if (!async &&
+#if !WINUI3
+						dispatcher.CheckAccess();
+#else
+						dispatcher.HasThreadAccess
+#endif
+                    )
                 {
                     action();
                 }               
                 else
                 {
-                    dispatcher.BeginInvoke(action, priority);
-                }
+#if !WINUI3
+                    dispatcher.TryEnqueue(action, priority);
+#else
+	                dispatcher.TryEnqueue(priority, () => action());
+#endif
+				}
             };
         }
 
@@ -52,7 +79,7 @@ namespace System.Threading
         /// <param name="priority">Desired priority</param>
         /// <param name="action">Action</param>
         public void BeginOnUiThread(
-            DispatcherPriority priority, Action action)
+            DispatcherQueuePriority priority, Action action)
         {
             EnsureDispatch();
             _dispatch(action, true, priority);
@@ -70,7 +97,7 @@ namespace System.Threading
         /// <param name="priority">Desired priority</param>
         /// <param name="action">Action</param>
         public void OnUiThread(
-            DispatcherPriority priority, Action action)
+            DispatcherQueuePriority priority, Action action)
         {
             EnsureDispatch();
             _dispatch(action, false, priority);
