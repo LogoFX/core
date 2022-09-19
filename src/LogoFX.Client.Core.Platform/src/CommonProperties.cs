@@ -5,7 +5,6 @@ using Microsoft.UI.Xaml;
 using System.Windows;
 #endif
 
-
 namespace LogoFX.Client.Core
 {
     /// <summary>
