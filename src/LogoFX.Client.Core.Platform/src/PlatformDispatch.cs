@@ -1,13 +1,10 @@
 using System.Diagnostics.CodeAnalysis;
-using LogoFX.Client.Core;
-
-#if !WINUI3
-using System.Windows.Threading;
-#endif
-
 #if WINUI3
 using Microsoft.UI.Dispatching;
+#else
+using System.Windows.Threading;
 #endif
+using LogoFX.Client.Core;
 
 // ReSharper disable once CheckNamespace
 namespace System.Threading
@@ -18,10 +15,10 @@ namespace System.Threading
     [SuppressMessage("ReSharper", "UnusedMember.Global")]
     public class PlatformDispatch : IDispatch
     {
-#if !WINUI3
-        private Action<Action, bool, DispatcherPriority> _dispatch;
-#else
+#if WINUI3
 		private Action<Action, bool, DispatcherQueuePriority> _dispatch;
+#else
+        private Action<Action, bool, DispatcherPriority> _dispatch;
 #endif
         private void EnsureDispatch()
         {
@@ -37,20 +34,23 @@ namespace System.Threading
         public void InitializeDispatch()
         {
 	        var dispatcher
-#if !WINUI3
-                = Dispatcher.CurrentDispatcher;
-#else
+#if WINUI3
 		        = DispatcherQueue.GetForCurrentThread();
+#else
+                = Dispatcher.CurrentDispatcher;
 #endif
-            if (dispatcher == null)
-                throw new InvalidOperationException("Dispatch is not initialized correctly");
-            _dispatch = (action, async, priority) =>
+	        if (dispatcher == null)
+	        {
+		        throw new InvalidOperationException("Dispatch is not initialized correctly");
+	        }
+
+	        _dispatch = (action, async, priority) =>
             {
                 if (!async &&
-#if !WINUI3
-						dispatcher.CheckAccess()
-#else
+#if WINUI3
 						dispatcher.HasThreadAccess
+#else
+						dispatcher.CheckAccess()
 #endif
                     )
                 {
@@ -58,10 +58,10 @@ namespace System.Threading
                 }               
                 else
                 {
-#if !WINUI3
-                    dispatcher.BeginInvoke(action, priority);
-#else
+#if WINUI3
 	                dispatcher.TryEnqueue(priority, () => action());
+#else
+                    dispatcher.BeginInvoke(action, priority);
 #endif
 				}
             };
@@ -69,9 +69,7 @@ namespace System.Threading
 
         /// <inheritdoc />
         public void BeginOnUiThread(Action action)
-        {
-            BeginOnUiThread(Consts.DispatcherPriority, action);            
-        }
+	        => BeginOnUiThread(Consts.DispatcherPriority, action);
 
         /// <summary>
         /// Begins the action on the UI thread according to the specified priority
@@ -79,10 +77,10 @@ namespace System.Threading
         /// <param name="priority">Desired priority</param>
         /// <param name="action">Action</param>
         public void BeginOnUiThread(
-#if !WINUI3
-	        DispatcherPriority priority,
-#else
+#if WINUI3
             DispatcherQueuePriority priority,
+#else
+	        DispatcherPriority priority,
 #endif 
             Action action)
         {
@@ -91,10 +89,8 @@ namespace System.Threading
         }
 
         /// <inheritdoc />
-        public void OnUiThread(Action action)
-        {
-            OnUiThread(Consts.DispatcherPriority, action);
-        }
+        public void OnUiThread(Action action) 
+	        => OnUiThread(Consts.DispatcherPriority, action);
 
         /// <summary>
         /// Executes the action on the UI thread according to the specified priority
@@ -102,10 +98,10 @@ namespace System.Threading
         /// <param name="priority">Desired priority</param>
         /// <param name="action">Action</param>
         public void OnUiThread(
-#if !WINUI3
-	        DispatcherPriority priority,
-#else
+#if WINUI3
             DispatcherQueuePriority priority, 
+#else
+	        DispatcherPriority priority,
 #endif
 			Action action)
         {

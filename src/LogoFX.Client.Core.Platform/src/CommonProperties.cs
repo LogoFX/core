@@ -1,12 +1,10 @@
-﻿
-#if (NET || NETCORE) && !WINUI3
+﻿using System.Diagnostics.CodeAnalysis;
+#if WINUI3
+using Microsoft.UI.Xaml;
+#else
 using System.Windows;
 #endif
 
-using System.Diagnostics.CodeAnalysis;
-#if WINUI3
-using Microsoft.UI.Xaml;
-#endif
 
 namespace LogoFX.Client.Core
 {
@@ -21,10 +19,8 @@ namespace LogoFX.Client.Core
         /// <param name="obj"></param>
         /// <returns></returns>
         [SuppressMessage("ReSharper", "UnusedMember.Global")]
-        public static DependencyObject GetOwner(DependencyObject obj)
-        {
-            return (DependencyObject)obj.GetValue(OwnerProperty);
-        }
+        public static DependencyObject GetOwner(DependencyObject obj) 
+	        => (DependencyObject)obj.GetValue(OwnerProperty);
 
         /// <summary>
         /// Sets the owner value
@@ -32,16 +28,18 @@ namespace LogoFX.Client.Core
         /// <param name="obj"></param>
         /// <param name="value"></param>
         [SuppressMessage("ReSharper", "UnusedMember.Global")]
-        public static void SetOwner(DependencyObject obj, DependencyObject value)
-        {
-            obj.SetValue(OwnerProperty, value);
-        }
-
+        public static void SetOwner(DependencyObject obj, DependencyObject value) 
+	        => obj.SetValue(OwnerProperty, value);
+        
         // Using a DependencyProperty as the backing store for Owner.  This enables animation, styling, binding, etc...
         /// <summary>
         /// Owner which is usually the parent.
         /// </summary>
         public static readonly DependencyProperty OwnerProperty =
-            DependencyProperty.RegisterAttached("Owner", typeof(DependencyObject), typeof(CommonProperties), new PropertyMetadata(null));
+	        DependencyProperty.RegisterAttached(
+		        "Owner", 
+		        typeof(DependencyObject), 
+		        typeof(CommonProperties),
+		        new PropertyMetadata(null));
     }
 }

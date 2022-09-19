@@ -11,12 +11,12 @@ namespace LogoFX.Client.Core
         /// <summary>
         /// The dispatcher priority
         /// </summary>
-#if !WINUI3
-        public const System.Windows.Threading.DispatcherPriority
-            DispatcherPriority = System.Windows.Threading.DispatcherPriority.DataBind;
+#if WINUI3
+        public const Microsoft.UI.Dispatching.DispatcherQueuePriority DispatcherPriority 
+			= Microsoft.UI.Dispatching.DispatcherQueuePriority.Normal;
 #else
-        public const Microsoft.UI.Dispatching.DispatcherQueuePriority
-			DispatcherPriority = Microsoft.UI.Dispatching.DispatcherQueuePriority.Normal;
+        public const System.Windows.Threading.DispatcherPriority DispatcherPriority 
+	        = System.Windows.Threading.DispatcherPriority.DataBind;
 #endif
     }
 }
