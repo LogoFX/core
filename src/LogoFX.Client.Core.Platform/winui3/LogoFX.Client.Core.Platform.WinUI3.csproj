@@ -1,0 +1,30 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>net6.0-windows10.0.19041.0</TargetFramework>
+    <TargetPlatformMinVersion>10.0.17763.0</TargetPlatformMinVersion>
+    <RootNamespace>LogoFX.Client.Core</RootNamespace>
+    <RuntimeIdentifiers>win10-x86;win10-x64;win10-arm64</RuntimeIdentifiers>
+    <UseWinUI>true</UseWinUI>
+    <AssemblyName>LogoFX.Client.Core.Platform</AssemblyName>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <DefineConstants>TRACE;WINUI3</DefineConstants>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <DefineConstants>TRACE;WINUI3</DefineConstants>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="..\src\CommonProperties.cs" Link="CommonProperties.cs" />
+    <Compile Include="..\src\Consts.cs" Link="Consts.cs" />
+    <Compile Include="..\src\PlatformDispatch.cs" Link="PlatformDispatch.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+      <PackageReference Include="Microsoft.WindowsAppSDK" Version="1.1.5" />
+      <PackageReference Include="Microsoft.Windows.SDK.BuildTools" Version="10.0.22621.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\LogoFX.Client.Core\LogoFX.Client.Core.csproj" />
+  </ItemGroup>
+</Project>
