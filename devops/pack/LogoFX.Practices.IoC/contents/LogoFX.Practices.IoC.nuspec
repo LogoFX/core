@@ -16,7 +16,7 @@
     </releaseNotes>
     <dependencies>
       <dependency id="LogoFX.Core" version="2.2.6" />
-      <dependency id="Solid.Practices.Modularity" version="2.3.5" />
+      <dependency id="Solid.Practices.Modularity" version="2.3.6-rc1" />
     </dependencies>
     <tags>framework logofx dotnet</tags>
     <repository type="Open Source" url="https://github.com/LogoFX/core" />
