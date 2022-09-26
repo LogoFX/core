@@ -12,7 +12,7 @@
     <iconUrl>https://github.com/LogoFX/logofx-assets/blob/master/icons/icon.png?raw=true</iconUrl>
     <description>LogoFX Client Theming containing rich theming infrastructure</description>
     <summary>LogoFX Client Theming containing rich theming infrastructure</summary>
-    <releaseNotes>Initial release</releaseNotes>
+    <releaseNotes></releaseNotes>
     <tags>framework logofx dotnet</tags>
     <repository type="Open Source" url="https://github.com/LogoFX/core" />
   </metadata>

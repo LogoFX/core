@@ -10,7 +10,7 @@
     <projectUrl>https://github.com/LogoFX/core</projectUrl>
     <iconUrl>https://github.com/LogoFX/logofx-assets/blob/master/icons/icon.png?raw=true</iconUrl>
     <description>LogoFX Core assemblies containing collections and weak objects implementations.</description>
-    <releaseNotes>Improved notification management via dedicated interface.</releaseNotes>
+    <releaseNotes></releaseNotes>
     <tags>framework logofx core dotnet</tags>
     <repository type="Open Source" url="https://github.com/LogoFX/core" />
   </metadata>

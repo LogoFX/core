@@ -12,7 +12,7 @@
     <iconUrl>https://github.com/LogoFX/logofx-assets/blob/master/icons/icon.png?raw=true</iconUrl>
     <description>LogoFX Client Core Core containing core facilities for client applications development, including implementation of INotifyPropertyChanged and ambient context for the dispatcher.</description>
     <summary>LogoFX Client Core Core containing core facilities for client applications development, including implementation of INotifyPropertyChanged and ambient context for the dispatcher.</summary>
-    <releaseNotes>Added SetProperty functionality</releaseNotes>
+    <releaseNotes></releaseNotes>
     <dependencies>
       <dependency id="LogoFX.Core" version="2.2.7-rc1" />
     </dependencies>
