@@ -346,6 +346,12 @@ MigrationBackup/
 # Ionide (cross platform F# VS Code tools) working folder
 .ionide/
 
+#Generated SpecFlow feature.cs files
+*.feature.cs
 # Generated packages and intermediate output
 output
 devops/pack/**/contents/lib
+!devops/build/
+**/secret.json
+**/FeatureData.json
+**/TestExecution.json

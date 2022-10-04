@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2011/10/nuspec.xsd">
   <metadata>
     <id>LogoFX.Client.Core.Core</id>
-    <version>2.2.6</version>
+    <version>2.2.7-rc1</version>
     <title>LogoFX.Client.Core.Core</title>
     <authors>Gennady Verdel, David Kossoglyad, Vlad Spivak</authors>
     <owners>Gennady Verdel</owners>
@@ -12,9 +12,9 @@
     <iconUrl>https://github.com/LogoFX/logofx-assets/blob/master/icons/icon.png?raw=true</iconUrl>
     <description>LogoFX Client Core Core containing core facilities for client applications development, including implementation of INotifyPropertyChanged and ambient context for the dispatcher.</description>
     <summary>LogoFX Client Core Core containing core facilities for client applications development, including implementation of INotifyPropertyChanged and ambient context for the dispatcher.</summary>
-    <releaseNotes>Added SetProperty functionality</releaseNotes>
+    <releaseNotes></releaseNotes>
     <dependencies>
-      <dependency id="LogoFX.Core" version="2.2.6" />
+      <dependency id="LogoFX.Core" version="2.2.7-rc1" />
     </dependencies>
     <tags>framework logofx dotnet</tags>
     <repository type="Open Source" url="https://github.com/LogoFX/core" />
