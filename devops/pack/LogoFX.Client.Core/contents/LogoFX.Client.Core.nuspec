@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2011/10/nuspec.xsd">
   <metadata>
     <id>LogoFX.Client.Core</id>
-    <version>2.2.6</version>
+    <version>2.2.7</version>
     <title>LogoFX.Client.Core</title>
     <authors>Gennady Verdel, David Kossoglyad, Vlad Spivak</authors>
     <owners>Gennady Verdel</owners>
@@ -12,9 +12,10 @@
     <iconUrl>https://github.com/LogoFX/logofx-assets/blob/master/icons/icon.png?raw=true</iconUrl>
     <description>LogoFX Client Core containing platform-specific utilities for client applications, including dispatcher.</description>
     <summary>LogoFX Client Core containing platform-specific utilities for client applications, including dispatcher.</summary>
-    <releaseNotes>Added .NET 5 support</releaseNotes>
+    <releaseNotes>
+    </releaseNotes>
     <dependencies>
-      <dependency id="LogoFX.Client.Core.Core" version="2.2.6" />
+      <dependency id="LogoFX.Client.Core.Core" version="2.2.7" />
     </dependencies>
     <tags>framework logofx dotnet</tags>
     <repository type="Open Source" url="https://github.com/LogoFX/core" />
