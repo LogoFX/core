@@ -12,6 +12,6 @@
     <DebugSymbols>true</DebugSymbols>
   </PropertyGroup>
   <ItemGroup>
-    <PackageReference Include="Solid.Core" Version="2.3.6-rc1" />
+    <PackageReference Include="Solid.Core" Version="2.3.6" />
   </ItemGroup>
 </Project>

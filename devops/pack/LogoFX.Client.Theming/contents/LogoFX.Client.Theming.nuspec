@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2011/10/nuspec.xsd">
   <metadata>
     <id>LogoFX.Client.Theming</id>
-    <version>2.2.7-rc1</version>
+    <version>2.2.7</version>
     <title>LogoFX.Client.Theming</title>
     <authors>Dmitry Bublik, David Kossoglyad, Gennady Verdel</authors>
     <owners>Gennady Verdel</owners>
@@ -12,7 +12,8 @@
     <iconUrl>https://github.com/LogoFX/logofx-assets/blob/master/icons/icon.png?raw=true</iconUrl>
     <description>LogoFX Client Theming containing rich theming infrastructure</description>
     <summary>LogoFX Client Theming containing rich theming infrastructure</summary>
-    <releaseNotes></releaseNotes>
+    <releaseNotes>
+    </releaseNotes>
     <tags>framework logofx dotnet</tags>
     <repository type="Open Source" url="https://github.com/LogoFX/core" />
   </metadata>
